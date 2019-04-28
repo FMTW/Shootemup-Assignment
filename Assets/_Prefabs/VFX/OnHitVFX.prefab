@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7426446291358968440}
   - component: {fileID: 7323226303295108154}
   - component: {fileID: 7339953728622222708}
-  - component: {fileID: 2394351595230454178}
   m_Layer: 0
   m_Name: OnHitVFX
   m_TagString: Untagged
@@ -4456,15 +4455,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &2394351595230454178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7430290616661761872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa72c59a639f944ca2927d2f6b75c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

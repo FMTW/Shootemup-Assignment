@@ -9,6 +9,11 @@ TagManager:
   - PlayerProjectiles
   - Boundary
   - PlayerCamera
+  - World
+  - Turrets
+  - Aircrafts
+  - Powerups
+  - Explosions
   layers:
   - Default
   - TransparentFX

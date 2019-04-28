@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2239323379028272498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9054250025539158590}
+  m_Layer: 15
+  m_Name: Launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9054250025539158590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239323379028272498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5063443647835564603}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4088447243753319841
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +256,6 @@ GameObject:
   - component: {fileID: 4088447243752894855}
   - component: {fileID: 4088447243754189223}
   - component: {fileID: 4088447243755320167}
-  - component: {fileID: 4088447243753319844}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -295,20 +324,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4088447243753319844
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4088447243753319847}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 70be9a4e4188719409d63725ea7eed85, type: 3}
 --- !u!1 &5063443647835564604
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5063443647835564603}
   - component: {fileID: 5063443647835564602}
+  - component: {fileID: 5965044057364231407}
   - component: {fileID: 5063443647835564605}
   m_Layer: 0
   m_Name: Player
@@ -340,6 +356,7 @@ Transform:
   m_Children:
   - {fileID: 4088447243752894853}
   - {fileID: 5063443649267664547}
+  - {fileID: 9054250025539158590}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,6 +376,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &5965044057364231407
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5063443647835564604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.28330845
+  m_Height: 1.6151965
+  m_Direction: 2
+  m_Center: {x: 0.015520453, y: 0.15122655, z: -0.33928978}
 --- !u!114 &5063443647835564605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,10 +410,20 @@ MonoBehaviour:
     xMax: 5.7
     zMin: -5
     zMax: 11
+  weaponLevel: 0
+  weapons: []
+  weapon: {fileID: 0}
   muzzle: {fileID: 5063443649267664547}
-  fireMode: {fileID: 4381263630156888742, guid: 10ed65d18aba4b84b9328de00a9b7801,
-    type: 3}
   fireRate: 0.75
+  multiplier: 0
+  missile: {fileID: 0}
+  launcher: {fileID: 0}
+  target: {fileID: 0}
+  range: 0
+  damage: 0
+  missileFireRate: 0
+  missileLifeTime: 0
+  OnKilledVFX: {fileID: 0}
 --- !u!1 &5063443649267664546
 GameObject:
   m_ObjectHideFlags: 0

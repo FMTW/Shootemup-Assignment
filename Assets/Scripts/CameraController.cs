@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     [SerializeField] private float intensity;
     [SerializeField] private Transform mainCam;
+
     
+    void LateUpdate()
+    {
+        transform.position = player.position;
+    }
+
     IEnumerator Shake()
     {
         float t = 0.5f;

@@ -11,9 +11,9 @@ public class Bullet : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * speed;
     }
 
-    private void Update()
-    {
-        if (!gameObject.GetComponentInChildren<MeshRenderer>().isVisible)
-            Destroy(gameObject);
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Enemy"))
+    //        /other.GetComponent<PlaneController>().TakeDamage();
+    //}
 }
