@@ -5,8 +5,10 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private float turnRate;
+    [SerializeField] private GameObject hitVFX;
     
     private Rigidbody rb;
 
@@ -34,7 +36,10 @@ public class Missile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("This missile hits enemy");
+            other.GetComponent<Turret>().TakeDamage(gameObject, damage);
+            GameObject clone = Instantiate(hitVFX, transform.position, transform.rotation);
+            clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
+            Destroy(clone, 1f);
             Destroy(gameObject);
         }
 

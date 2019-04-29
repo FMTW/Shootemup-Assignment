@@ -9552,5 +9552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  damage: 20
   speed: 7
   turnRate: 2
+  hitVFX: {fileID: 1000013462590818, guid: 0e31e460e788ec74a85821e041c38a8c, type: 3}

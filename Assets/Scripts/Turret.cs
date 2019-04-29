@@ -18,14 +18,18 @@ public class Turret : MonoBehaviour
     [Header("VFX Setting")]
     [SerializeField] private GameObject hitVFX;
     [SerializeField] private GameObject explosionVFX;
-    [SerializeField] private GameObject breach;
+    [SerializeField] private Renderer[] glowTargets;
+    [SerializeField] private float glowIntensity;
 
     [Header("Loot")]
     [SerializeField] private GameObject powerup;
+    [SerializeField] private float spawnRate;
+
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        glowTargets = GetComponentsInChildren<Renderer>();
     }
 
     void Update()
@@ -40,15 +44,33 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("PlayerProjectiles"))
+    //    {
+    //        health -= 10;
+    //        GameObject clone = Instantiate(hitVFX, other.transform.position, other.transform.rotation);
+    //        clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
+    //        Destroy(clone, 1f);
+    //        Destroy(other.gameObject);
+    //        StartCoroutine(Glow());
+    //    }
+
+    //    if (health <= 0)
+    //    {
+    //        GameObject.FindWithTag("PlayerCamera").SendMessage("Shake");
+    //        GameObject clone = Instantiate(explosionVFX, turret.transform.position, turret.transform.rotation);
+    //        clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
+    //        Destroy(clone, 1f);
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    public void TakeDamage(GameObject other, float damage)
     {
         if (other.CompareTag("PlayerProjectiles"))
         {
-            health -= 10;
-            GameObject clone = Instantiate(hitVFX, other.transform.position, other.transform.rotation);
-            clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
-            Destroy(clone, 2f);
-            Destroy(other.gameObject);
+            health -= damage;
             StartCoroutine(Glow());
         }
 
@@ -57,18 +79,24 @@ public class Turret : MonoBehaviour
             GameObject.FindWithTag("PlayerCamera").SendMessage("Shake");
             GameObject clone = Instantiate(explosionVFX, turret.transform.position, turret.transform.rotation);
             clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
-            Destroy(clone, 2f);
+            Destroy(clone, 1f);
+            DropItem();
             Destroy(gameObject);
         }
     }
 
     IEnumerator Glow()
     {
+        
+
         float time = 0.5f;
         while (time > 0)
         {
             time -= Time.deltaTime;
-            breach.GetComponent<Renderer>().material.SetVector("_EmissionColor", Color.yellow * 1f * time);
+            foreach (var target in glowTargets)
+            {
+                target.material.SetVector("_EmissionColor", Color.yellow * glowIntensity * time);
+            }
 
             yield return null;
         }
@@ -76,9 +104,9 @@ public class Turret : MonoBehaviour
 
     void DropItem()
     {
-        if (Random.value < 0.2f)
+        if (Random.value < spawnRate)
         {
-            GameObject clone = Instantiate(powerup, transform.position, transform.rotation);
+            GameObject clone = Instantiate(powerup, new Vector3(transform.position.x, 10f, transform.position.z), transform.rotation);
             clone.transform.parent = GameObject.FindGameObjectWithTag("Powerups").transform;
         }
     }

@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             missileColdDown = Time.time + missileFireRate;
             GameObject missileClone = Instantiate(missile, launcher.position, launcher.rotation);
+            missileClone.transform.parent = GameObject.FindGameObjectWithTag("Missiles").transform;
             missileClone.GetComponent<Missile>().SetTarget(target);
             Destroy(missileClone, missileLifeTime);
         }
