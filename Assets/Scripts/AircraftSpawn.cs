@@ -5,8 +5,7 @@ using UnityEngine;
 public class AircraftSpawn : MonoBehaviour
 {
     [Header("Spawn Setting")]
-    [SerializeField] private Transform spawnPosition;
-    [SerializeField] private GameObject airCraft;
+    [SerializeField] private GameObject aircraft;
     [SerializeField] private GameObject clone;
     [SerializeField] private int spawnCount;
 
@@ -24,9 +23,15 @@ public class AircraftSpawn : MonoBehaviour
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            clone = Instantiate(airCraft, spawnPosition.position, transform.rotation);
+            clone = Instantiate(aircraft, new Vector3(transform.position.x, 10f, transform.position.z), transform.rotation);
             clone.transform.parent = GameObject.FindGameObjectWithTag("Aircrafts").transform;
             yield return new WaitForSeconds(0.8f);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, .5f);
     }
 }

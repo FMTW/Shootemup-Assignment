@@ -8,9 +8,23 @@ public class TurretSpawn : MonoBehaviour
     [SerializeField] private GameObject turret;
     [SerializeField] private GameObject clone;
 
+    private Vector3 spawnPosition;
+
+    private void Start()
+    {
+        
+    }
+
     private void OnBecameVisible()
     {
-        clone = Instantiate(turret, transform.position, transform.rotation);
+        RaycastHit hit;
+        var down = new Vector3(0, -1, 0);
+        if (Physics.Raycast(transform.position, down, out hit))
+        {
+            spawnPosition = new Vector3(transform.position.x, (transform.position.y - hit.distance), transform.position.z);
+        }
+
+        clone = Instantiate(turret, spawnPosition, transform.rotation);
         clone.transform.parent = GameObject.FindGameObjectWithTag("Turrets").transform;
     }
 
@@ -19,5 +33,9 @@ public class TurretSpawn : MonoBehaviour
         Destroy(clone, 1f);
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, .5f);
+    }
 }

@@ -6,9 +6,7 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     [Header("Powerup Types")]
-    public bool weapon;
-    public bool fireRate;
-
+    [SerializeField] string powerupType;
     private float tumble = 1f;
 
     void Start()
@@ -20,11 +18,14 @@ public class Powerup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (fireRate)
-                other.GetComponentInParent<PlayerController>().IncreaseFireRate();
-            else if (weapon)
-                other.GetComponentInParent<PlayerController>().UpgradeWeapon();
-
+            if (powerupType == "Firerate")
+                other.GetComponent<Player>().IncreaseFireRate();
+            else if (powerupType == "Weapon")
+                other.GetComponent<Player>().UpgradeWeapon();
+            else if (powerupType == "Hydro")
+                other.GetComponent<Player>().UpgradeHydro();
+            else if (powerupType == "Missile")
+                other.GetComponent<Player>().ActivateMissile();
             Destroy(gameObject);
         }
     }

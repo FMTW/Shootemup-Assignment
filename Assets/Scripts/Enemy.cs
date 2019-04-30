@@ -4,79 +4,54 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     [Header("Basic Setting")]
-    [SerializeField] private float health;
-    [SerializeField] private float speed;
+    [SerializeField] protected float health;
 
     [Header("VFX Setting")]
-    [SerializeField] private GameObject hitVFX;
-    [SerializeField] private GameObject killedVFX;
-    private Material material;
-
+    [SerializeField] protected GameObject explosionVFX;
+    [SerializeField] protected float glowIntensity;
+    protected Renderer[] glowTargets;
 
     [Header("Loot")]
-    [SerializeField] private GameObject powerup;
+    [SerializeField] protected GameObject powerup;
+    [SerializeField] protected float spawnRate;
 
+    public virtual void TakeDamage(float damage) {}
 
-    private Rigidbody rb;
-    private MeshCollider meshCollider;
-
-    private void Start()
+    protected void Explode()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
-
-        meshCollider = GetComponentInChildren<MeshCollider>();
-        material = GetComponentInChildren<Renderer>().material;
+        GameObject clone = Instantiate(explosionVFX, transform.position, transform.rotation);
+        clone.transform.parent = GameObject.FindGameObjectWithTag("Explosions").transform;
+        Destroy(clone, 2f);
+        Destroy(gameObject);
     }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("PlayerProjectiles"))
-        {
-            health -= 10;
-            GameObject clone = Instantiate(hitVFX, other.transform.position, other.transform.rotation);
-            Destroy(clone, 2f);
-            StartCoroutine(Glow());
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Player"))
-        {
-            GameObject clone = Instantiate(killedVFX, transform.position, transform.rotation);
-            Destroy(clone, 2f);
-            DropItem();
-            Destroy(gameObject);
-            other.GetComponentInParent<PlayerController>().TakeDamage(health);
-        }
 
-        if (health <= 0)
+
+    protected void MultiplyStats(float multiplier)
+    {
+        health *= multiplier;
+    }
+
+    protected void DropItem()
+    {
+        if (Random.value < spawnRate)
         {
-            GameObject clone = Instantiate(killedVFX, transform.position, transform.rotation);
-            Destroy(clone, 2f);
-            DropItem();
-            Destroy(gameObject);
+            GameObject clone = Instantiate(powerup, new Vector3(transform.position.x, 10f, transform.position.z), transform.rotation);
+            clone.transform.parent = GameObject.FindGameObjectWithTag("Powerups").transform;
         }
     }
 
-    IEnumerator Glow()
+    protected IEnumerator Glow()
     {
         float time = 0.5f;
         while (time > 0)
         {
             time -= Time.deltaTime;
-            material.SetVector("_EmissionColor", Color.yellow * 0.75f * time);
-
+            foreach (var target in glowTargets)
+            {
+                target.material.SetVector("_EmissionColor", Color.yellow * glowIntensity * time);
+            }
             yield return null;
-        }
-    }
-
-    void DropItem()
-    {
-        if (Random.value < 0.2f)
-        {
-            GameObject clone = Instantiate(powerup, transform.position, transform.rotation);
-            clone.transform.parent = GameObject.FindGameObjectWithTag("Powerups").transform;
         }
     }
 }

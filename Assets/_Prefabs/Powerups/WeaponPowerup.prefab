@@ -152,5 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b42d918d8082d459cb2c9805a8e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: 1
-  fireRate: 0
+  powerupType: Weapon
