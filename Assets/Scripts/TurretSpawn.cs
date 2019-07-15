@@ -7,13 +7,9 @@ public class TurretSpawn : MonoBehaviour
     [Header("Spawn Setting")]
     [SerializeField] private GameObject turret;
     [SerializeField] private GameObject clone;
+    [HideInInspector] public int difficulty;
 
     private Vector3 spawnPosition;
-
-    private void Start()
-    {
-        
-    }
 
     private void OnBecameVisible()
     {

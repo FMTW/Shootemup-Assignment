@@ -216,7 +216,7 @@ MonoBehaviour:
   explosionVFX: {fileID: 1000013462590818, guid: 3f5f39ea0043eca49a9ec4b941cae1e3,
     type: 3}
   glowIntensity: 0.75
-  powerup: {fileID: 8511058230553540687, guid: b8711d1693b63bc48a6e27be21fa0960, type: 3}
+  powerup: {fileID: 8511058230553540687, guid: 309eead396b488a40aaf41f415d2e72f, type: 3}
   spawnRate: 0.3
   speed: 3
 --- !u!1 &7806124332031616534
@@ -361,10 +361,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5281257040219574762}
     m_Modifications:
-    - target: {fileID: 100006, guid: feda19536f4e079408328e6888c570ab, type: 3}
-      propertyPath: m_Name
-      value: Plane
-      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: feda19536f4e079408328e6888c570ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -420,6 +416,10 @@ PrefabInstance:
     - target: {fileID: 400006, guid: feda19536f4e079408328e6888c570ab, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: feda19536f4e079408328e6888c570ab, type: 3}
+      propertyPath: m_Name
+      value: Plane
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: feda19536f4e079408328e6888c570ab, type: 3}
       propertyPath: m_Materials.Array.data[0]

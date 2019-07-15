@@ -156,7 +156,7 @@ MonoBehaviour:
   explosionVFX: {fileID: 1000013462590818, guid: 1d0929b2253452943960b5595fb3d338,
     type: 3}
   glowIntensity: 0.75
-  powerup: {fileID: 8511058230553540687, guid: b8711d1693b63bc48a6e27be21fa0960, type: 3}
+  powerup: {fileID: 2986982006005324486, guid: 4a278f3cf7c2b2747b6db2e7439671ad, type: 3}
   spawnRate: 0.4
   player: {fileID: 0}
   turret: {fileID: 5028785489085598515}

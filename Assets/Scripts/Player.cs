@@ -7,10 +7,9 @@ public class Boundary{
     public float xMin, xMax, zMin, zMax;
 }
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    [Header("Basic Setting")]
-    [SerializeField] private float health;
+    [Header("Player Setting")]
     [SerializeField] private float currentSpeed;
     [SerializeField] private float mouseSpeed;
     [SerializeField] private float keyboardSpeed;
@@ -105,7 +104,6 @@ public class Player : MonoBehaviour
             missileClone.GetComponent<Missile>().SetTarget(target);
             Destroy(missileClone, missileLifeTime);
         }
-
     }
 
 
@@ -164,7 +162,7 @@ public class Player : MonoBehaviour
             for (currentPod = 0; currentPod < hydroLevel; currentPod++)
             {
                 if (currentPod == 4)
-                    currentPod = 1;
+                    currentPod = 1; 
                 GameObject rocketClone = Instantiate(rocket, hydroPods[currentPod].position, Quaternion.Euler(0f, transform.eulerAngles.y, transform.eulerAngles.z));
                 Destroy(rocketClone, rocketLifeTime);
                 rocketCount++;

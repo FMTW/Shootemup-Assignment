@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AircraftSpawn : MonoBehaviour
+public class AircraftSpawn : LevelManager
 {
     [Header("Spawn Setting")]
     [SerializeField] private GameObject aircraft;
@@ -24,6 +24,7 @@ public class AircraftSpawn : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             clone = Instantiate(aircraft, new Vector3(transform.position.x, 10f, transform.position.z), transform.rotation);
+            clone.GetComponent<EnemyUAO>().IncreaseDifficulty(waveCount);
             clone.transform.parent = GameObject.FindGameObjectWithTag("Aircrafts").transform;
             yield return new WaitForSeconds(0.8f);
         }

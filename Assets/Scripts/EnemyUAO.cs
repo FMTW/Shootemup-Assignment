@@ -34,6 +34,11 @@ public class EnemyUAO : Enemy
         }
     }
 
+    public void IncreaseDifficulty(int waveCount)
+    {
+        
+    }
+ 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
