@@ -4,28 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private float intensity;
-    [SerializeField] private Transform mainCam;
+    [SerializeField] Transform m_Target = null;
+    [SerializeField] float m_HeightOffset = 10;
 
-    
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = player.position;
-    }
-
-    IEnumerator Shake()
-    {
-        float t = 0.5f;
-        while (t > 0)
-        {
-            t -= Time.deltaTime;
-            float randonX = Random.Range(-intensity, intensity) * t;
-            float randonY = Random.Range(-intensity, intensity) * t;
-
-            mainCam.transform.localPosition = new Vector3(randonX, randonY, 0);
-
-            yield return null;
-        }
+        transform.position = m_Target.position + new Vector3(0, m_HeightOffset, 0);
     }
 }
