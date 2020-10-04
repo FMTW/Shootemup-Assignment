@@ -133,7 +133,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16660
+  m_Name: pb_Mesh16448
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 1214846594}
   - component: {fileID: 1214846593}
   - component: {fileID: 1214846592}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,6 +1612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7533731262306103170, guid: ac48ec3dcbdd9204f82f0e526898efd8,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 7533731262306103180, guid: ac48ec3dcbdd9204f82f0e526898efd8,
         type: 3}
