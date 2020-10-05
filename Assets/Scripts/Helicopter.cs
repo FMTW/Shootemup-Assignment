@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace TowerDefenseGame {
     public class Helicopter : Vehicle
     {
         [Header("Chopper Stats")]
-        [SerializeField] float m_Speed;
+        [SerializeField] float m_Speed = 0;
 
         [Header("Chopper Config")]
-        [SerializeField] LayerMask m_LayerMask;
-        [SerializeField] Vector2 m_Tilt;
+        [SerializeField] Vector2 m_Tilt = Vector2.zero;
 
-        private Rigidbody m_Rb;
-        private float m_MoveHorizontal, m_MoveVertical;
+        private Transform m_Model = null;
+        private Rigidbody m_Rb = null;
+        private float m_MoveHorizontal = 0;
+        private float m_MoveVertical = 0;
 
         void Start()
         {
             m_Rb = GetComponent<Rigidbody>();
+            m_Model = transform.GetChild(0);
         }
 
         private void Update()
@@ -41,7 +43,7 @@ namespace TowerDefenseGame {
             m_MoveVertical = Input.GetAxis("Vertical");
 
             // Tilt player based on velocity
-            m_Rb.rotation = Quaternion.Euler(m_MoveVertical * m_Tilt.x, 0, m_MoveHorizontal * -m_Tilt.y);
+            m_Model.localRotation = Quaternion.Euler(m_MoveVertical * m_Tilt.x, 0, m_MoveHorizontal * -m_Tilt.y);
 
             Vector3 _input = new Vector3(m_MoveHorizontal, 0, m_MoveVertical);
 
@@ -53,11 +55,8 @@ namespace TowerDefenseGame {
         /// </summary>
         private void RotateHelicopter()
         {
-            RaycastHit _hitInfo;
-            Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(_ray, out _hitInfo, Mathf.Infinity, m_LayerMask))
-                m_Rb.transform.LookAt(new Vector3(_hitInfo.point.x, transform.position.y, _hitInfo.point.z));
+            Vector3 _aimpoint = CameraController.Instance.GetAimpointPosition();
+            m_Rb.transform.LookAt(new Vector3(_aimpoint.x, transform.position.y, _aimpoint.z));
 
         }
     }

@@ -133,7 +133,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16448
+  m_Name: pb_Mesh16490
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -321,7 +321,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 760740259}
 --- !u!114 &1214846593
@@ -1097,7 +1097,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: 90bd28070cc506e479bf1bca73f7e0ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1460,16 +1460,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Utility
       objectReference: {fileID: 0}
-    - target: {fileID: 7581299275427208656, guid: e848314106dadb04ea1ffdbf68c7b352,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581299275427208656, guid: e848314106dadb04ea1ffdbf68c7b352,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e848314106dadb04ea1ffdbf68c7b352, type: 3}
 --- !u!1001 &7042492236146968215
@@ -1539,16 +1529,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transport
       objectReference: {fileID: 0}
-    - target: {fileID: 7712885388638896130, guid: 88f0e62b8b7b75d46806e4ab12102f8a,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7712885388638896130, guid: 88f0e62b8b7b75d46806e4ab12102f8a,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f0e62b8b7b75d46806e4ab12102f8a, type: 3}
 --- !u!1001 &7533731261757616075
@@ -1612,11 +1592,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7533731262306103170, guid: ac48ec3dcbdd9204f82f0e526898efd8,
-        type: 3}
-      propertyPath: m_LayerMask.m_Bits
-      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 7533731262306103180, guid: ac48ec3dcbdd9204f82f0e526898efd8,
         type: 3}
